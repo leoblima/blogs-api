@@ -1,13 +1,8 @@
-const jwt = require('jsonwebtoken');
-require('dotenv').config();
+const generate = require('../auth/generateToken');
 
 const login = async ({ email }) => {
   try {
-    const jwtConfig = {
-      expiresIn: '7d',
-      algorithm: 'HS256',
-    };
-  const token = jwt.sign({ data: email }, process.env.JWT_SECRET, jwtConfig);
+  const token = generate.generateToken(email);
   return { code: 200, token };
   } catch (error) {
     return { code: 500, message: error.message };

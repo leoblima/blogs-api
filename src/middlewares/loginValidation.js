@@ -9,8 +9,7 @@ const empty = (value) => !value;
 
 const userInvalid = async (email) => {
  try {
-  const { code, message } = await userService.getUserByEmail(email);
-  console.log(code, message);
+  const { code } = await userService.getUserByEmail(email);
   if (Number(code) === 200) return false;
   return true;
  } catch (e) {
