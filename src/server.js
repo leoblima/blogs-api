@@ -22,15 +22,17 @@ app.post('/login', validateLogin.checkLogin, controllerLogin.login);
 
 app.post('/user', validateUser.checkUser, controllerUser.addUser);
 
-app.get('/user', auth.validateJMT, controllerUser.findAll);
-
-app.get('/user/:id', auth.validateJMT, controllerUser.findByPk);
-
 app.post(
   '/categories',
   validateCategory.checkCategory, 
   auth.validateJMT,
   controllerCategory.addCategory,
   );
+
+app.get('/user', auth.validateJMT, controllerUser.findAll);
+
+app.get('/user/:id', auth.validateJMT, controllerUser.findByPk);
+
+app.get('/categories', auth.validateJMT, controllerCategory.findAll);
 
 app.listen(port, () => console.log('ouvindo porta', port));

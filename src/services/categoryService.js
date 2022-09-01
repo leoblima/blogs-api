@@ -10,4 +10,14 @@ const addCategory = async ({ name }) => {
  }
 };
 
-module.exports = { addCategory };
+const findAll = async () => {
+  try {
+   const categories = await Category.findAll();
+
+   return { code: 200, data: categories };
+  } catch (error) {
+   return { code: 500, message: error.message };
+  }
+};
+
+module.exports = { addCategory, findAll };

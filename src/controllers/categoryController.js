@@ -12,4 +12,16 @@ try {
 }
 };
 
-module.exports = { addCategory };
+const findAll = async (_req, res) => {
+  try {
+   const { code, data, message } = await service.findAll();
+
+   if (message) return res.status(code).json({ message });
+  
+   return res.status(code).json(data);
+  } catch (error) {
+   return res.status(500).json({ message: error.message });
+  }
+};
+
+module.exports = { addCategory, findAll };
