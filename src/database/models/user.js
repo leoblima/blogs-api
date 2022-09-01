@@ -9,7 +9,7 @@ const User = (sequelize, DataTypes) => {
   {
     timestamps: false, 
     tableName: 'Users',
-    underscored: true,
+    underscored: false,
   });
 
   User.associate = (models) => {
