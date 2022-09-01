@@ -7,7 +7,7 @@ const User = (sequelize, DataTypes) => {
   }, 
   {
     timestamps: false, 
-    tableName: 'User',
+    tableName: 'Users',
     underscored: true,
   });
 
