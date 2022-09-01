@@ -17,7 +17,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         field: 'categoryId',
         references: {
-          model: 'Category',
+          model: 'Categories',
           key:'id'
         },
         onUpdate: 'CASCADE',
