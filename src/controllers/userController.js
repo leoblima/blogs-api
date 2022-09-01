@@ -12,4 +12,13 @@ const addUser = async (req, res) => {
   }
 };
 
-module.exports = { addUser };
+const findAll = async (_req, res) => {
+ try {
+  const { code, data } = await service.findAll();
+  return res.status(code).json(data);
+ } catch (error) {
+  return res.status(500).json({ message: error.message });
+ }
+};
+
+module.exports = { addUser, findAll };

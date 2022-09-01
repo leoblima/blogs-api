@@ -24,4 +24,14 @@ const addUser = async ({ displayName, email, password, image }) => {
  }
 };
 
-module.exports = { getUserByEmail, addUser };
+const findAll = async () => {
+try {
+ const users = await User.findAll({ attributes: { exclude: 'password' } });
+
+ return { code: 200, data: users };
+} catch (error) {
+ return { code: 500, message: error.message };
+}
+};
+
+module.exports = { getUserByEmail, addUser, findAll };
