@@ -19,4 +19,6 @@ app.post('/user', validateUser.checkUser, controllerUser.addUser);
 
 app.get('/user', auth.validateJMT, controllerUser.findAll);
 
+app.get('/user/:id', auth.validateJMT, controllerUser.findByPk);
+
 app.listen(port, () => console.log('ouvindo porta', port));

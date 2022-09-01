@@ -21,4 +21,17 @@ const findAll = async (_req, res) => {
  }
 };
 
-module.exports = { addUser, findAll };
+const findByPk = async (req, res) => {
+ try {
+  const { id } = req.params;
+  const { code, data, message } = await service.findByPk(id);
+
+  if (message) return res.status(code).json({ message });
+
+  return res.status(code).json(data);
+ } catch (error) {
+  return res.status(500).json({ message: error.message });
+ }
+};
+
+module.exports = { addUser, findAll, findByPk };
