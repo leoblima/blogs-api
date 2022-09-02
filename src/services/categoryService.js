@@ -20,4 +20,16 @@ const findAll = async () => {
   }
 };
 
-module.exports = { addCategory, findAll };
+const findByPk = async (id) => {
+  try {
+    const category = await Category.findByPk(id);
+  
+    if (!category) return { code: 404, message: 'User does not exist' };
+  
+    return { code: 200, data: category };
+   } catch (error) {
+    return { code: 500, message: error.message };
+   }
+};
+
+module.exports = { addCategory, findAll, findByPk };

@@ -10,7 +10,7 @@ const BlogPost = (sequelize, DataTypes) => {
   {
     timestamps: false, 
     tableName: 'BlogPosts',
-    underscored: true,
+    underscored: false,
   });
 
   BlogPost.associate = (models) => {

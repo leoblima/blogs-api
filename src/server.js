@@ -4,10 +4,12 @@ const app = require('./api');
 const controllerLogin = require('./controllers/loginController');
 const controllerUser = require('./controllers/userController');
 const controllerCategory = require('./controllers/categoryController');
+const controllerPost = require('./controllers/postController');
 
 const validateLogin = require('./middlewares/loginValidation');
 const validateUser = require('./middlewares/userValidation');
 const validateCategory = require('./middlewares/categoryValidation');
+const validatePost = require('./middlewares/postValidation');
 const auth = require('./auth/validateJMT');
 
 // não remova a variável `API_PORT` ou o `listen`
@@ -28,6 +30,8 @@ app.post(
   auth.validateJMT,
   controllerCategory.addCategory,
   );
+
+app.post('/post', auth.validateJMT, validatePost.checkPost, controllerPost.addPost);
 
 app.get('/user', auth.validateJMT, controllerUser.findAll);
 
